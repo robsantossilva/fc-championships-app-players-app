@@ -50,6 +50,16 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: "kong"
+    konghq.com/override: players-do-not-preserve-host
+    konghq.com/plugins: prometheus-players
+
+  hosts:
+    - paths:
+      - path: /api/players
+        backend:
+          serviceName: players
+          servicePort: 9999
+  tls: []
 
 #  hosts:
 #    - paths:
