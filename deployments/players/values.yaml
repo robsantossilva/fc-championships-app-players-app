@@ -23,10 +23,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-podAnnotations:
-  linkerd.io/inject: enabled
-  ingress.kubernetes.io/service-upstream: "true"
-  nginx.ingress.kubernetes.io/service-upstream : "true"
+podAnnotations: {}
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -44,22 +41,10 @@ service:
   port: 9999
 
 kong:
-  enabled: true
+  enabled: false
 
 ingress:
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.class: "kong"
-    konghq.com/override: players-do-not-preserve-host
-    konghq.com/plugins: prometheus-players
-
-  hosts:
-    - paths:
-      - path: /api/players
-        backend:
-          serviceName: players
-          servicePort: 9999
-  tls: []
+  enabled: false
 
 #  hosts:
 #    - paths:
