@@ -35,8 +35,8 @@ spec:
     - http:
     {{- end }}
         paths:
-          {{- range $p := .paths }}
-          - path: {{ $p }}
+          {{- range .paths }}
+          - path: {{ .path }}
             backend:
               serviceName: {{ $fullName }}
               servicePort: {{ $svcPort }}
